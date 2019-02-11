@@ -44,8 +44,13 @@ int main() {
 
 	reset_all();
 
+	// We need to determine how the clock affects the algs
+	// Simple options is that params are only updated on a clock
+	// signal, sort of a s&h type of behaviour.
+
 	for(int i=0; i<50000; i++) {
 		if (i % 2000 == 0) {
+			// Acts as trigger or reset depending on trigger mode
 			reset_all();
 		}
 		tick_all();
