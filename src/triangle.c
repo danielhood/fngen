@@ -20,19 +20,19 @@ void triangle_set_val2(unsigned char val) {
 }
 
 unsigned char triangle_get() {
-	//printf("%d", triangle_curr);
 	return triangle_curr >> 8;
 }
 
 void triangle_tick() {
-	//printf("%d,%d\n", triangle_curr, dir);
-	triangle_curr += ((unsigned short)(short)triangle_inc * triangle_dir);
 	if (triangle_curr < triangle_inc) {
+		triangle_curr = triangle_inc - triangle_curr;
 		triangle_dir = 1;
-	} else if (triangle_curr > triangle_max) {
-		triangle_ovr = triangle_curr - triangle_max;
-		triangle_curr = triangle_curr - triangle_ovr;
+	} else if (triangle_curr > triangle_max - triangle_inc) {
+		triangle_ovr = triangle_max - triangle_curr;
+		triangle_curr = triangle_max - triangle_inc - triangle_ovr;
 		triangle_dir = -1;
+	} else {
+		triangle_curr += ((unsigned short)(short)triangle_inc * triangle_dir);
 	}
 }
 
