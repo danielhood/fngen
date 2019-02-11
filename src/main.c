@@ -28,9 +28,15 @@ void graph(unsigned char val) {
 
 int main() {
 	ramp_set_max(255);
-	ramp_set_inc(10);
+	ramp_set_inc(100);
+	ramp_set_single(1);
+	ramp_set_initial(0);
+
 	rampinv_set_max(255);
-	rampinv_set_inc(10);
+	rampinv_set_inc(100);
+	rampinv_set_single(1);
+	rampinv_set_initial(100);
+
 	triangle_set_max(255);
 	triangle_set_inc(100);
 	triangle_set_single(1);
@@ -44,8 +50,8 @@ int main() {
 		}
 		tick_all();
 		if (i % 12 == 0) {
-			//graph(ramp_get());
-			//graph(rampinv_get());
+			graph(ramp_get());
+			graph(rampinv_get());
 			graph(triangle_get());
 		}
 		usleep(1000);
