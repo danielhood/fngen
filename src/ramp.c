@@ -6,13 +6,11 @@ unsigned short ramp_curr;
 unsigned short ramp_max = 65535-255;
 unsigned char ramp_inc;
 
-void ramp_set_val1(unsigned char val) {
-	if (val == 255) val = 254;
-
+void ramp_set_max(unsigned char val) {
 	ramp_max = val << 8;
 }
 
-void ramp_set_val2(unsigned char val) {
+void ramp_set_inc(unsigned char val) {
 	ramp_inc = val;
 }
 
